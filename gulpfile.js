@@ -6,6 +6,10 @@ const gulp      = require('gulp'),
     _           = require('lodash'),
     util        = require('util'),
     Plugins     = require('gulp-load-plugins');
+    AUDIO_SRC   = './audio/src',
+    AUDIO_DST   = './audio/dist',
+    S3_BUCKET   = '';
+    S3_FOLDER   = '';
 
 const plugins = Plugins({
     DEBUG: false,
@@ -22,8 +26,8 @@ const plugins = Plugins({
 
 gulp.task('process-audio', done => {
   // transcode files to mp3
-  return gulp.src('./audio/src/**/*.@(WAV|wav|ogg|mp3)')
-    .pipe(plugins.changed('./audio/dist'))
+  return gulp.src(`${AUDIO_SRC}/**/*.@(WAV|wav|ogg|mp3)`)
+    .pipe(plugins.changed(`${AUDIO_DST}`))
     .pipe(plugins.fluentFfmpeg('mp3', function (cmd) {
       return cmd
         .audioBitrate('48k')
@@ -37,12 +41,12 @@ gulp.task('process-audio', done => {
 const s3 = plugins.s3Upload({useIAM: true});
 
 gulp.task('upload-audio', done => {
-  return gulp.src("./audio/dist/**/*.mp3")
+  return gulp.src(`${AUDIO_DST}/**/*.mp3`)
     .pipe(s3({
-        Bucket: bucket,
+        Bucket: S3_BUCKET,
         ACL:    'public-read',
         keyTransform: function(filename) {
-            return `${folder}${filename}`;
+            return `${S3_FOLDER}/${filename}`;
         }
     },
     {
