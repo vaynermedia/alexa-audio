@@ -23,6 +23,7 @@ brew install ffmpeg
 [Set up AWS Credentials and Region for Development](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html)
 
 ### Usage
+Put source audio files into the audio/src folder.
 
 Transcode audio files
 ```
