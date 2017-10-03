@@ -57,5 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# Exclude audio files
 audio/dist/*
+!audio/dist/.gitkeep
+
 audio/src/*
+!audio/src/.gitkeep
