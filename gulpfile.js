@@ -5,11 +5,11 @@
 const gulp      = require('gulp'),
     _           = require('lodash'),
     util        = require('util'),
-    Plugins     = require('gulp-load-plugins');
+    Plugins     = require('gulp-load-plugins'),
     AUDIO_SRC   = './audio/src',
     AUDIO_DST   = './audio/dist',
-    S3_BUCKET   = '';
-    S3_FOLDER   = '';
+    S3_BUCKET   = 'vm-alexa',
+    S3_FOLDER   = 'test';
 
 const plugins = Plugins({
     DEBUG: false,
