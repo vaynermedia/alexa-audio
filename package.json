@@ -1,31 +1,21 @@
 {
-  "name": "ellen-call",
+  "name": "alexa-audio",
   "version": "1.0.0",
-  "description": "",
-  "main": "gulpfile.js",
-  "directories": {
-    "test": "tests"
-  },
+  "description": "Audio converter/uploader for Amazon Alexa",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "[ -d audio ] || mkdir audio && [ -d audio/src ] || mkdir audio/src && [ -d audio/dist ] || mkdir audio/dist"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-beautify": "^2.0.1",
-    "gulp-changed": "^3.1.0",
-    "gulp-csv-to-json": "^0.1.1",
-    "gulp-csv2json": "^0.2.5",
-    "gulp-csvtojson": "^0.2.0",
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "gulp-changed": "^3.2.0",
     "gulp-fluent-ffmpeg": "^1.0.2",
-    "gulp-json-transform": "^0.4.2",
-    "gulp-json2csv": "^1.0.4",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-run-sequence": "^0.3.2",
-    "gulp-s3-upload": "^1.6.4",
-    "through2": "^2.0.3"
+    "gulp-s3-upload": "^1.7.0"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "gulp-load-plugins": "^1.5.0"
+  }
 }
